@@ -3,6 +3,7 @@ package main
 import (
 	"crypto/sha256"
 	"fmt"
+	"math/rand"
 	"toy-blockchain/blockchain"
 )
 
@@ -13,9 +14,16 @@ func main() {
 
 	block := chain.NewBlock("proof", initialHash)
 
-	chain.NewTransaction("me", "you", 35)
+	for i := 0; i < 10; i++ {
+		chain.NewTransaction(fmt.Sprintf("me%d", i), fmt.Sprintf("you%d", i), rand.Intn(1000))
+	}
 
 	block2 := chain.NewBlock("more proof", blockchain.Hash(block))
+
+	for i := 0; i < 5; i++ {
+		chain.NewTransaction(fmt.Sprintf("me%d", i), fmt.Sprintf("you%d", i), rand.Intn(1000))
+	}
+
 	block3 := chain.NewBlock("yet more proof", blockchain.Hash(block2))
 
 	fmt.Printf("%v\n", block)

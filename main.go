@@ -18,13 +18,13 @@ func main() {
 		chain.NewTransaction(fmt.Sprintf("me%d", i), fmt.Sprintf("you%d", i), rand.Intn(1000))
 	}
 
-	block2 := chain.NewBlock("more proof", blockchain.Hash(block))
+	block2 := chain.NewBlock("more proof", "")
 
 	for i := 0; i < 5; i++ {
 		chain.NewTransaction(fmt.Sprintf("me%d", i), fmt.Sprintf("you%d", i), rand.Intn(1000))
 	}
 
-	block3 := chain.NewBlock("yet more proof", blockchain.Hash(block2))
+	block3 := chain.NewBlock("yet more proof", "")
 
 	fmt.Printf("%v\n", block)
 	fmt.Printf("%v\n", block2)

@@ -10,7 +10,7 @@ import (
 func main() {
 	chain := blockchain.New()
 
-	initialHash := fmt.Sprintf("%x", sha256.Sum224([]byte("initial hash")))
+	initialHash := fmt.Sprintf("%x", sha256.Sum256([]byte("initial hash")))
 
 	block := chain.NewBlock("proof", initialHash)
 

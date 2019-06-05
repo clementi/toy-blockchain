@@ -32,7 +32,11 @@ func New() *blockchain {
 	}
 }
 
-func (self *blockchain) NewBlock(proof string, previousHash string) *block {
+func (self *blockchain) NewBlock(proof string) *block {
+	return self.NewBlockWithHash(proof, "")
+}
+
+func (self *blockchain) NewBlockWithHash(proof string, previousHash string) *block {
 	prevHash := previousHash
 
 	if len(prevHash) == 0 {

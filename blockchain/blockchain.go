@@ -45,7 +45,7 @@ func (self *blockchain) NewBlockWithHash(proof string, previousHash string) *blo
 
 	block := block{
 		Index:        len(self.Chain) + 1,
-		Timestamp:    time.Now().Unix(),
+		Timestamp:    time.Now().UnixNano(),
 		Transactions: self.CurrentTransactions,
 		Proof:        proof,
 		PreviousHash: prevHash,

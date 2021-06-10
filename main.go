@@ -4,6 +4,7 @@ import (
 	"crypto/sha256"
 	"fmt"
 	"math/rand"
+	"time"
 	"toy-blockchain/blockchain"
 )
 
@@ -13,6 +14,8 @@ func main() {
 	initialHash := fmt.Sprintf("%x", sha256.Sum256([]byte("initial hash")))
 
 	block := chain.NewBlockWithHash("proof", initialHash)
+
+	rand.Seed(time.Now().UnixNano())
 
 	for i := 0; i < 10; i++ {
 		chain.NewTransaction(fmt.Sprintf("me%d", i), fmt.Sprintf("you%d", i), rand.Intn(1000))
